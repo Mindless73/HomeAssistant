@@ -1,0 +1,64 @@
+# Initial Setup of Values and LED-Colors depending on State
+alias: Publish Button Plus States
+description: ""
+variables:
+  entities:
+    - light.group_entrance
+    - light.group_dining
+    - light.group_piano
+    - light.wled_living
+    - light.hue_filament_bulb
+    - lock.aqara_smart_lock_u200
+    - lock.window_handle_office
+    - lock.window_handle_kitchen
+  btn_map:
+    light.group_entrance: 3-1
+    light.group_dining: 4-1
+    light.group_piano: 5-1
+    light.wled_living: 6-1
+    light.hue_filament_bulb: 7-1
+    lock.aqara_smart_lock_u200: 8-1
+    lock.window_handle_office: 3-2
+    lock.window_handle_kitchen: 4-2
+sequence:
+  - repeat:
+      for_each: "{{ entities }}"
+      sequence:
+        - variables:
+            current: "{{ repeat.item }}"
+            st: "{{ states(current) }}"
+            btn: "{{ btn_map[current] }}"
+            color: >-
+              {% if st in ['on','unlocked'] %}#FF0000 {% elif st in
+              ['off','locked'] %}#FFFFFF {% else %}#000000{% endif %}
+            label: "{{ st|upper }}"
+        - data:
+            topic: buttonplus/Entrance/button/{{ btn }}/led/front/rgb/set
+            payload: "{{ color }}"
+            qos: 1
+            retain: true
+          action: mqtt.publish
+        - data:
+            topic: buttonplus/Entrance/button/{{ btn }}/led/front/brightness/set
+            payload: "150"
+            qos: 1
+          action: mqtt.publish
+        - data:
+            topic: buttonplus/Entrance/button/{{ btn }}/label/set
+            payload: "{{ label }}"
+            qos: 1
+          action: mqtt.publish
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      topic: buttonplus/Entrance/displayitem/2/value/set
+      qos: "1"
+      retain: true
+      payload: <
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      topic: buttonplus/Entrance/displayitem/3/value/set
+      payload: ">"
+      qos: "1"
+      retain: true

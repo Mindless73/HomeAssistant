@@ -1,0 +1,12 @@
+# Initalize the Display with current States
+alias: Button Plus Entrance | Initialize Labels/LEDs
+description: ""
+triggers:
+  - topic: homeassistant/event/buttonplus_Entrance_button_8-1_pushbutton/config
+    qos: 0
+    trigger: mqtt
+actions:
+  - action: script.publish_button_plus_states
+    data: {}
+mode: single
+
