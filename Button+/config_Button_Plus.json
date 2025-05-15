@@ -1,0 +1,40 @@
+{
+  "info": {
+    "id": "btn_f89c94",
+    "mac": "DC:54:75:F8:9C:94",
+    "firmware": "2.0.1",
+    "connectors": [
+      { "id": 0, "connector": 1, "type": 2 },
+      { "id": 1, "connector": 2, "type": 1 },
+      { "id": 2, "connector": 3, "type": 1 },
+      { "id": 3, "connector": 4, "type": 1 }
+    ],
+    "sensors": [{ "sensorid": 1, "description": "Sensirion STS35 Temperature Sensor" }]
+  },
+  "core": { "deviceid": "Entrance", "location": "Entrance", "autobackup": true, "brightness": 80, "color": 16765791, "statusbar": 0, "topics": [] },
+  "buttons": [
+    { "buttonid": "3-1", "position": 3, "page": 1, "toplabel": "ENTRANCE", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "4-1", "position": 4, "page": 1, "toplabel": "DINING", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "5-1", "position": 5, "page": 1, "toplabel": "PIANO", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "6-1", "position": 6, "page": 1, "toplabel": "LIVING", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "7-1", "position": 7, "page": 1, "toplabel": "SIDEBOARD", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "8-1", "position": 8, "page": 1, "toplabel": "DOOR", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "1-0", "position": 1, "page": 0, "toplabel": "", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "2-0", "position": 2, "page": 0, "toplabel": "", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "1-1", "position": 1, "page": 1, "label": "Label", "toplabel": "Top label", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "1-2", "position": 1, "page": 2, "label": "Label", "toplabel": "Top label", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "3-2", "position": 3, "page": 2, "toplabel": "Office Window", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] },
+    { "buttonid": "4-2", "position": 4, "page": 2, "toplabel": "Kitchen Window", "leds": [{ "frontwall": "front", "onrgb": 0, "topics": [] }], "topics": [] }
+  ],
+  "displayitems": [
+    { "displayitemid": "0", "x": 0, "y": 0, "page": 0, "boxtype": 1, "fontsize": 3, "align": 1, "width": 50, "label": "Room", "unit": "", "round": 2, "topics": [] },
+    { "displayitemid": "1", "x": 0, "y": 0, "page": 0, "boxtype": 1, "fontsize": 3, "align": 7, "width": 90, "label": "Outside", "unit": "", "round": 2, "topics": [] },
+    { "displayitemid": "2", "x": 0, "y": 0, "page": 0, "boxtype": 1, "fontsize": 2, "align": 4, "width": 30, "unit": "", "round": 0, "topics": [] },
+    { "displayitemid": "3", "x": 7, "y": 0, "page": 1, "boxtype": 1, "fontsize": 2, "align": 6, "width": 30, "unit": "", "round": 0, "topics": [] }
+  ],
+  "brokers": [
+    { "brokerid": "buttonplus", "url": "mqtt://mqtt.button.plus", "port": 0, "wsport": 0, "username": "", "password": "", "defaultschema": false, "defaultschemalocalstate": false, "hassdiscovery": false },
+    { "brokerid": "homeassistant", "url": "mqtt://192.168.86.192", "port": 0, "wsport": 0, "username": "******", "password": "******", "defaultschema": true, "defaultschemalocalstate": false, "hassdiscovery": true }
+  ],
+  "sensors": [{ "sensorid": 1, "interval": 30, "topics": [] }]
+}
