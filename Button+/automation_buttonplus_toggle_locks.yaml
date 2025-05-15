@@ -1,0 +1,35 @@
+# automation.buttonplus_toggle_locks
+alias: Button Plus Entrance | Toggle Locks
+description: ""
+triggers:
+  - topic: buttonplus/Entrance/button/+/pushbutton
+    value_template: "{{ value_json.event_type }}"
+    payload: click
+    trigger: mqtt
+conditions:
+  - condition: template
+    value_template: "{{ entity != '' and entity is defined }}"
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ is_state(entity, 'locked') }}"
+        sequence:
+          - target:
+              entity_id: "{{ entity }}"
+            action: lock.unlock
+      - conditions:
+          - condition: template
+            value_template: "{{ not is_state(entity, 'locked') }}"
+        sequence:
+          - target:
+              entity_id: "{{ entity }}"
+            action: lock.lock
+variables:
+  btn: "{{ trigger.topic.split('/')[-2] }}"
+  mapping:
+    8-1: lock.aqara_smart_lock_u200
+    3-2: lock.window_handle_office
+    4-2: lock.window_handle_kitchen
+  entity: "{{ mapping[btn] if btn in mapping else '' }}"
+mode: restart

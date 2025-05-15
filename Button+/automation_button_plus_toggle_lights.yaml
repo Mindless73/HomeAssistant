@@ -1,0 +1,27 @@
+# automation.buttonplus_toggle_lights
+alias: Button Plus Entrance | Toggle Lights
+description: "Toggle Lights based on MQTT topic"
+triggers:
+  - topic: buttonplus/Entrance/button/+/pushbutton
+    value_template: "{{ value_json.event_type }}"
+    payload: click
+    trigger: mqtt
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ entity != '' }}"
+        sequence:
+          - target:
+              entity_id: "{{ entity }}"
+            action: light.toggle
+variables:
+  btn: "{{ trigger.topic.split('/')[-2] }}"
+  mapping:
+    3-1: light.group_entrance
+    4-1: light.group_dining
+    5-1: light.group_piano
+    6-1: light.wled_living_room
+    7-1: light.hue_filament_bulb
+  entity: "{{ mapping[btn] if btn in mapping else '' }}"
+mode: restart

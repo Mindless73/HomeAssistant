@@ -1,5 +1,5 @@
 # script.publish_button_plus_states
-alias: Publish Button Plus States
+alias: Button Plus Entrance | Publish States
 description: "Initial Setup of Values and LED-Colors depending on State"
 variables:
   entities:
