@@ -6,7 +6,7 @@ triggers:
     qos: 0
     trigger: mqtt
 actions:
-  - action: script.publish_button_plus_states (https://github.com/Mindless73/HomeAssistant/blob/a37207ab7009a4385c2a9f2175f51dd4a7d1d239/Button%2B/Scripts.yaml#L1)
+  - action: script.publish_button_plus_states [File](Scripts.yaml)
     data: {}
 mode: single
 
