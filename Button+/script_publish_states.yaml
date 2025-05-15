@@ -1,6 +1,6 @@
-# Initial Setup of Values and LED-Colors depending on State
+# script.publish_button_plus_states
 alias: Publish Button Plus States
-description: ""
+description: "Initial Setup of Values and LED-Colors depending on State"
 variables:
   entities:
     - light.group_entrance
