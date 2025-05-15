@@ -6,7 +6,7 @@ triggers:
     qos: 0
     trigger: mqtt
 actions:
-  - action: script.publish_button_plus_states [File](Scripts.yaml)
+  - action: script.publish_button_plus_states
     data: {}
 mode: single
 
